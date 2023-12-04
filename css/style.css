@@ -38,3 +38,14 @@ footer{
     color: #fff;
     justify-content: center;
 }
+.team{
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    image-rendering: auto;
+    width: 380px;
+    border-radius: 20px;
+    margin-left: 3px;
+}
