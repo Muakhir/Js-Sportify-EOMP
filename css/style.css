@@ -1,3 +1,14 @@
+*,
+*::after,
+*::before{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    font-family: 'Playfair Display', serif;
+}
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
 nav{
     background-color: rgba(23, 23, 23, 0.712);
 }
