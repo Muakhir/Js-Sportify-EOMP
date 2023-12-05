@@ -5,6 +5,7 @@ new Date().getFullYear()
 let productsWrapper = document.querySelector('[data-items]')
 let searchProduct = document.querySelector('[data-input]')
 let productSort = document.querySelector('[data-sort]')
+let Cart = document.querySelector('[data-cart]')
 let items = JSON.parse( localStorage.getItem('items')) ? JSON.parse( localStorage.getItem('items'))
 : localStorage.setItem('items',JSON.stringify(
     [
@@ -60,8 +61,8 @@ let items = JSON.parse( localStorage.getItem('items')) ? JSON.parse( localStorag
                     </div>
                     </div>`
                 })
-            }else{
-                productsWrapper.innerHTML = ''
+            }else {
+                productsWrapper.innerHTML = 'No Item Was Found'
             }
         }catch(e){
             console.log(e.message)
@@ -74,7 +75,7 @@ let items = JSON.parse( localStorage.getItem('items')) ? JSON.parse( localStorag
             let searchproduct = items.filter( prod =>{
                 return prod.Name.toLowerCase().includes(searchProduct.value.toLowerCase())
             })
-            if(searchProduct.value.length > 0){
+            if(searchProduct.length != 0){
                 productsWrapper.innerHTML = ''
                 searchproduct.forEach(items =>{
                 productsWrapper.innerHTML += `<div class="card" style="width: 20rem;">
@@ -87,12 +88,13 @@ let items = JSON.parse( localStorage.getItem('items')) ? JSON.parse( localStorag
                     </div>`
                 })
             }else{
-                displayProduct()
+                productsWrapper.innerHTML = 'No Items Found'
             }
         }catch(e){
             console.log(e.message);
         }
     })
+    
 
     function sortItems(){
     items.sort((a , b) => {
@@ -102,3 +104,16 @@ let items = JSON.parse( localStorage.getItem('items')) ? JSON.parse( localStorag
     }
     
     productSort.addEventListener('click',sortItems)
+
+// Assuming Cart and items are defined somewhere in your code
+
+function addCartItem(i) {
+    Cart.push(items[i])
+    localStorage.setItem('purchased', JSON.stringify(Cart))
+}
+document.addEventListener('click', function(event) {
+    if (event.target.hasAttribute('data-cart')) {
+        addCartItem(event.target.value)
+    }
+    displayProduct()
+});
