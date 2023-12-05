@@ -39,9 +39,13 @@ footer{
 }
 .team{
     display: flex;
-    width: 380px;
+    width: 365px;
     padding: 15px;
     border-radius: 25px;
+}
+.Team{
+    display: flex;
+    justify-content: center;
 }
 .hpic{
     display: flex;
@@ -53,4 +57,16 @@ footer{
 }
 .hA{
     text-align: center;
+}
+.card{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  gap: 150px;
+  border-radius: 25px;
+  padding: 5px;
+}
+.pimg{
+    border-radius: 25px;
 }
