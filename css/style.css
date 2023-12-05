@@ -65,8 +65,51 @@ footer{
   justify-content: space-evenly;
   gap: 150px;
   border-radius: 25px;
-  padding: 5px;
 }
 .pimg{
     border-radius: 25px;
+}
+.psearch{
+    text-align: center;
+    display: flex;
+    padding: 5px;
+    width: 300px;
+    border-radius: 15px;
+    border: solid grey  ;
+}
+button{
+    border-radius: 15px;
+    border: solid gray;
+    color: #ffffff;
+    width: 100px;
+    background-color: gray;
+}
+.btn{
+    border-radius: 15px;
+    border: solid gray;
+    color: #ffffff;
+    width: 100px;
+    background-color: gray;
+}
+.btn:hover{
+    background-color: #fff;
+    color: #000000;
+    border-color: #3a3939;
+}
+button:hover{
+    background-color: #fff;
+    color: #000000;
+    border-color: #3a3939;
+}
+.psearch:hover{
+    background-color: #fff;
+    color: #000000;
+    border-color: #3a3939;
+}
+.nav-link:hover{
+    background-color: #a39595;
+    color: #000000;
+    border-color: #121212;
+    border-radius: 15px;
+    box-shadow: 2px 5px 10px black;
 }
