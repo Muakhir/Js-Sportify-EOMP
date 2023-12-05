@@ -5,7 +5,6 @@ new Date().getFullYear()
 let productsWrapper = document.querySelector('[data-items]')
 let searchProduct = document.querySelector('[data-input]')
 let productSort = document.querySelector('[data-sort]')
-
 let items = JSON.parse( localStorage.getItem('items')) ? JSON.parse( localStorage.getItem('items'))
 : localStorage.setItem('items',JSON.stringify(
     [
@@ -46,26 +45,60 @@ let items = JSON.parse( localStorage.getItem('items')) ? JSON.parse( localStorag
             Amount: "R1699.99"
         }
     ]
-))
-function displayProduct(){
-    productsWrapper.innerHTML += ''
-    try{
-        if(items){
-            items.forEach( items =>{
-                productsWrapper.innerHTML += `<div class="card" style="width: 20rem;">
-                <img src="${items.Image}" class="card-img-top pimg" alt="${items.id}">
-                <div class="card-body">
-                <h5 class="card-title">${items.Name}</h5>
-                <p class="card-text">${items.Amount}</p>
-                <button class="btn btn-primary">Cart</button>
-                </div>
-                </div>`
-            })
-        }else{
-            productsWrapper.innerHTML = 'No Items'
+    ))
+    function displayProduct(){
+        productsWrapper.innerHTML = ''
+        try{
+            if(items){
+                items.forEach( items =>{
+                    productsWrapper.innerHTML += `<div class="card" style="width: 20rem;">
+                    <img src="${items.Image}" class="card-img-top pimg" alt="${items.id}">
+                    <div class="card-body">
+                    <h5 class="card-title">${items.Name}</h5>
+                    <p class="card-text">${items.Amount}</p>
+                    <button class="btn btn-primary">Cart</button>
+                    </div>
+                    </div>`
+                })
+            }else{
+                productsWrapper.innerHTML = ''
+            }
+        }catch(e){
+            console.log(e.message)
         }
-    }catch(e){
-        console.log(e.message)
     }
-}
-displayProduct()
+    displayProduct()
+
+    searchProduct.addEventListener('keyup',() =>{
+        try{
+            let searchproduct = items.filter( prod =>{
+                return prod.Name.toLowerCase().includes(searchProduct.value.toLowerCase())
+            })
+            if(searchProduct.value.length > 0){
+                productsWrapper.innerHTML = ''
+                searchproduct.forEach(items =>{
+                productsWrapper.innerHTML += `<div class="card" style="width: 20rem;">
+                    <img src="${items.Image}" class="card-img-top pimg" alt="${items.id}">
+                    <div class="card-body">
+                    <h5 class="card-title">${items.Name}</h5>
+                    <p class="card-text">${items.Amount}</p>
+                    <button class="btn btn-primary">Cart</button>
+                    </div>
+                    </div>`
+                })
+            }else{
+                displayProduct()
+            }
+        }catch(e){
+            console.log(e.message);
+        }
+    })
+
+    function sortItems(){
+    items.sort((a , b) => {
+            return a.Name.localeCompare(b.Name)
+        });
+        displayProduct()
+    }
+    
+    productSort.addEventListener('click',sortItems)
