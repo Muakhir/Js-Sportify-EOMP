@@ -52,7 +52,7 @@ function displayProduct(){
     try{
         if(items){
             items.forEach( items =>{
-                productsWrapper.innerHTML += `<div class="card" style="width: 18rem;">
+                productsWrapper.innerHTML += `<div class="card" style="width: 20rem;">
                 <img src="${items.Image}" class="card-img-top pimg" alt="${items.id}">
                 <div class="card-body">
                 <h5 class="card-title">${items.Name}</h5>
