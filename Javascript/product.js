@@ -2,10 +2,11 @@
 document.querySelector("#CurrentYr").textContent =
 new Date().getFullYear()
 
+
 let productsWrapper = document.querySelector('[data-items]')
 let searchProduct = document.querySelector('[data-input]')
 let productSort = document.querySelector('[data-sort]')
-let Checkout = []
+let Checkout = JSON.parse( localStorage.getItem('purchased')) || []
 let Cart = document.querySelector('[data-cart]')
 let items = JSON.parse( localStorage.getItem('items')) ? JSON.parse( localStorage.getItem('items'))
 : localStorage.setItem('items',JSON.stringify(
@@ -103,8 +104,7 @@ let items = JSON.parse( localStorage.getItem('items')) ? JSON.parse( localStorag
     function addCart(items) {
        if(items){
         Checkout.push(items)
-        localStorage.setItem('purchased', JSON.stringify(Checkout))
-
+        localStorage.setItem('purchase', JSON.stringify(Checkout))
        }
     }
 
