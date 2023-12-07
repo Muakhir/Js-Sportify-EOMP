@@ -27,3 +27,15 @@ function checkoutDisplay(){
     }
 }
 checkoutDisplay()
+
+document.addEventListener('click',clrBtn)
+function clrBtn(){
+        checkWrap.innerHTML = ""
+        localStorage.removeItem("purchase")
+}
+
+document.addEventListener('click',purchBtn)
+function purchBtn(){
+    checkWrap.innerHTML = "Thank You For Purchasing"
+    
+}
