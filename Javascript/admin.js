@@ -95,3 +95,21 @@ function UpdateItem(items,i){
   location.reload()
 }
 
+function addNewItem() {
+  try {
+      let item = {
+          id: admin.length + 1,
+          Name: document.querySelector('#item-name').value,
+          id: document.querySelector('#item-id').value,
+          Amount: document.querySelector('#item-amount').value,
+          Image: document.querySelector('#item-image').value
+      }
+      admin.push(item);
+      localStorage.setItem('items', JSON.stringify(admin))
+      location.reload()
+      adminContent();
+  } catch (error) {
+      console.log(error.message);
+  }
+}
+
