@@ -17,29 +17,34 @@ function displayAdmin(){
                     <td>R${items.Amount}</td>
                     <td>
                         <!-- Button trigger modal -->
-                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#updateModal${i}">
                         <i class="bi bi-pen-fill"></i>
                         </button>
 
                         <!-- Modal -->
-                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal fade" id="updateModal${i}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                           <div class="modal-dialog">
                             <div class="modal-content">
                               <div class="modal-header">
-                                <h1 class="modal-title fs-5" id="exampleModalLabel">${items.Name}</h1>
+                                <h1 class="modal-title fs-5" id="exampleModalLabel${i}"></h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                               </div>
                               <div class="modal-body">
-                                <div class="col">
-                                <label>ID</label>
-                                <input type="text" ${items.id}>
+                              <div class="col">
+                                <label for="recipient-name${i}" class="col-form-label">Name:</label>
+                                <input type="text" class="form-control" id="recipient-Name${i}" value="${items.Name}">
                                 </div>
                                 <div class="col">
-                                <label>Price</label>
-                                <input type="text" ${items.Amount}">
+                                <label for="recipient-name${i}" class="col-form-label">Id:</label>
+                                <input type="text" class="form-control" id="recipient-id${i}" value="${items.id}">
                                 </div>
                                 <div class="col">
-                                <label>IMG URL</label>
-                                <input type="text" ${items.Image}>
+                                <<label for="recipient-name${i}" class="col-form-label">Price:</label>
+                                <input type="text" class="form-control" id="recipient-Amount${i}" value="R${items.Amount}">
+                                </div>
+                                <div class="col">
+                                <label for="recipient-name${i}" class="col-form-label">Image:</label>
+                                <input type="text" class="form-control" id="recipient-Image${i}" value="${items.Image}">
                                 </div>
                                 
                               </div>
@@ -72,30 +77,11 @@ adminSort.addEventListener('click',()=>{
         displayAdmin()
 })
 
-
-// function deleteBtn(index) {
-//     admin.splice(index, 1)
-//     localStorage.setItem('purchase', JSON.stringify(admin))
-// }
-// displayAdmin()
-// document.addEventListener('click',deleteBtn)
-// function deleteBtn(){
-//     try{
-//         let index = admin.findIndex(items =>{
-//             return items.id == items.id
-//         })
-//         admin.splice(index, 1)
-//         localStorage.setItem('items', JSON.stringify(admin))
-//         admin.innerHTML = ""
-//     }catch(e){
-//         console.log(e.message);
-//     }
-// }
-// deleteBtn()
 function deleteItem(index) {
     admin.splice(index, 1)
     localStorage.setItem('items', JSON.stringify(admin))
     displayAdmin()
 }
+
 
 
