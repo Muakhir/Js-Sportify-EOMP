@@ -20,21 +20,21 @@ function checkoutDisplay(){
                 <td>R${uniqueData[i][0].Amount * 
                     uniqueData[i].length}</td>
               </tr>
+             
             `   
         }
     }else{
-    checkWrap.innerHTML = 'Add Items'
+        checkWrap.innerHTML = `Add Items`
+
     }
 }
 checkoutDisplay()
 
-document.addEventListener('click',clrBtn)
 function clrBtn(){
         checkWrap.innerHTML = ""
         localStorage.removeItem("purchase")
 }
 
-document.addEventListener('click',purchBtn)
 function purchBtn(){
     checkWrap.innerHTML = "Thank You For Purchasing"
     
